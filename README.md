@@ -1,7 +1,7 @@
-# FILE: README.md
 # Yamikani Phiri - Developer Portfolio
 
 A modern, responsive portfolio website built with Next.js, Tailwind CSS, and Shadcn/UI components.
+in-progress...
 
 ## Features
 
@@ -48,10 +48,6 @@ A modern, responsive portfolio website built with Next.js, Tailwind CSS, and Sha
 2. Add your projects to the `PROJECTS` array
 3. Customize colors in `tailwind.config.js`
 4. Modify sections in `src/components/sections/`
-
-## Deployment
-
-Deploy to Vercel by connecting your GitHub repository.
 
 ---
 
