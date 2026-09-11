@@ -2,29 +2,30 @@
 
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
-import { Code2, Palette, Brain, Heart } from 'lucide-react'
+import { Code2, Brain, Feather, Landmark } from 'lucide-react'
+import { SITE_CONFIG } from '@/lib/constants'
 
 export default function About() {
   const interests = [
     {
-      icon: Brain,
-      title: "Machine Learning",
-      description: "Exploring AI applications for cultural preservation and social impact"
-    },
-    {
       icon: Code2,
-      title: "Web Development",
-      description: "Building scalable applications with modern technologies"
+      title: "Real-World Systems",
+      description: "Building and maintaining software that institutions and communities actually rely on"
     },
     {
-      icon: Palette,
+      icon: Brain,
+      title: "AI & Machine Learning",
+      description: "Exploring practical ML applications for cultural preservation and social impact"
+    },
+    {
+      icon: Landmark,
+      title: "Cultural Technology",
+      description: "Merging technology with Zambian culture, heritage, and local languages"
+    },
+    {
+      icon: Feather,
       title: "Creative Writing",
-      description: "Bilingual poetry under the pen name 'Nane Ndine Poet'"
-    },
-    {
-      icon: Heart,
-      title: "Cultural Tech",
-      description: "Merging technology with Zambian culture and heritage"
+      description: `Bilingual poetry under the pen name '${SITE_CONFIG.penName}'`
     }
   ]
 
@@ -51,22 +52,24 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm Yamikani Phiri, a final-year Computer Science student with a passion for building 
-              technology that bridges cultures and creates meaningful impact. My journey in tech is 
-              driven by a deep love for my Zambian heritage and a vision to preserve and celebrate 
-              our rich cultural traditions through innovative digital solutions.
+              I'm Yamikani Phiri, a Computer Science graduate and Software Developer with a passion
+              for building technology that bridges cultures and creates meaningful impact. My work
+              is driven by a deep connection to my Zambian heritage and a vision to preserve and
+              celebrate our cultural traditions through practical digital solutions.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              When I'm not coding, you'll find me writing bilingual poetry or exploring how machine 
-              learning can be applied to solve real-world problems in African contexts. I believe 
-              technology should be inclusive, culturally aware, and accessible to everyone.
+              I've worked on real institutional systems as a developer and consultant, and I spend
+              the rest of my time building projects at the intersection of AI/ML, data, and African
+              culture, and completing WorldQuant University's Foundations of Financial Engineering
+              certificate, which now feeds into how I think about financial data and time series.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              My work spans from church management systems to programming languages in local 
-              dialects, always with the goal of making technology more relatable and useful 
-              for my community.
+              When I'm not writing code, you'll find me writing bilingual poetry under the pen name
+              '{SITE_CONFIG.penName}'. I believe technology should be inclusive, culturally aware,
+              and useful to the people it's built for. That belief is really the throughline in
+              everything I build: {SITE_CONFIG.tagline}
             </p>
           </motion.div>
 
@@ -78,7 +81,7 @@ export default function About() {
             className="grid sm:grid-cols-2 gap-4"
           >
             {interests.map((interest) => (
-              <Card key={interest.title} className="hover:shadow-lg transition-shadow">
+              <Card key={interest.title} className="hover:shadow-lg hover:-translate-y-0.5 transition-all">
                 <CardContent className="p-6">
                   <interest.icon className="h-8 w-8 text-primary mb-3" />
                   <h3 className="font-semibold mb-2">{interest.title}</h3>

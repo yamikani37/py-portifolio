@@ -13,9 +13,10 @@ export default function ScrollToTopButton() {
   const actions = [
     { name: 'Top', id: 'hero' },
     { name: 'About', id: 'about' },
-    { name: 'Poetry', id: 'poetry' },
+    { name: 'Experience', id: 'experience' },
     { name: 'Projects', id: 'projects' },
     { name: 'Skills', id: 'skills' },
+    { name: 'Writing', id: 'poetry' },
     { name: 'Contact', id: 'contact' }
   ]
 

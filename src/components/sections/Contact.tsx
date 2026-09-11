@@ -5,8 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import { Mail, Loader2 } from 'lucide-react'
+import { Mail, Loader2, Github, Linkedin, FileText } from 'lucide-react'
 import { useState, FormEvent } from 'react'
+import { SITE_CONFIG } from '@/lib/constants'
 
 export default function Contact() {
   const [name, setName] = useState('')
@@ -53,7 +54,7 @@ export default function Contact() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project idea or just want to say hello? Fill out the form below.
+            Have a project, idea, or problem worth building something for?
           </p>
         </motion.div>
 
@@ -120,6 +121,25 @@ export default function Contact() {
               </form>
             </CardContent>
           </Card>
+
+          <div className="flex justify-center gap-6 mt-8">
+            <a href={SITE_CONFIG.links.github} target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+              <Github size={20} />
+            </a>
+            <a href={SITE_CONFIG.links.linkedin} target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+              <Linkedin size={20} />
+            </a>
+            <a href={`mailto:${SITE_CONFIG.links.email}`}
+              className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+              <Mail size={20} />
+            </a>
+            <a href={SITE_CONFIG.links.substack} target="_blank" rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors" aria-label="Substack">
+              <FileText size={20} />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

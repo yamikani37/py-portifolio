@@ -3,17 +3,19 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { SKILLS } from '@/lib/constants'
-import { 
-  Code, 
-  Layers, 
-  Palette, 
-  Database, 
-  Settings, 
-  Brain 
+import { SKILLS, SKILL_PROJECT_MAP } from '@/lib/constants'
+import { useProjectFilter } from '@/components/providers/ProjectFilterProvider'
+import {
+  Code,
+  Layers,
+  Database,
+  Settings,
+  Brain
 } from 'lucide-react'
 
 export default function Skills() {
+  const { activeTech, setActiveTech } = useProjectFilter()
+
   const skillCategories = [
     {
       title: "Languages",
@@ -22,36 +24,37 @@ export default function Skills() {
       color: "text-blue-500"
     },
     {
-      title: "Frameworks",
+      title: "Frameworks & Development",
       icon: Layers,
       skills: SKILLS.frameworks,
       color: "text-green-500"
     },
     {
-      title: "Styling",
-      icon: Palette,
-      skills: SKILLS.styling,
-      color: "text-purple-500"
-    },
-    {
-      title: "Databases",
+      title: "Data & Databases",
       icon: Database,
       skills: SKILLS.databases,
       color: "text-orange-500"
+    },
+    {
+      title: "AI / Machine Learning",
+      icon: Brain,
+      skills: SKILLS.ml,
+      color: "text-red-500"
     },
     {
       title: "Tools",
       icon: Settings,
       skills: SKILLS.tools,
       color: "text-gray-500"
-    },
-    {
-      title: "Machine Learning",
-      icon: Brain,
-      skills: SKILLS.ml,
-      color: "text-red-500"
     }
   ]
+
+  const handleSkillClick = (skill: string) => {
+    const linkedProjects = SKILL_PROJECT_MAP[skill] || []
+    if (linkedProjects.length === 0) return
+    setActiveTech(activeTech === skill ? null : skill)
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section id="skills" className="py-15 bg-secondary/30">
@@ -66,7 +69,7 @@ export default function Skills() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Technologies</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tools and technologies I use to bring ideas to life
+            Click a skill that links to a project to see where it's actually been used
           </p>
         </motion.div>
 
@@ -88,11 +91,24 @@ export default function Skills() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary">
-                        {skill}
-                      </Badge>
-                    ))}
+                    {category.skills.map((skill) => {
+                      const isLinked = (SKILL_PROJECT_MAP[skill] || []).length > 0
+                      return (
+                        <button
+                          key={skill}
+                          onClick={() => handleSkillClick(skill)}
+                          disabled={!isLinked}
+                          className={isLinked ? 'cursor-pointer' : 'cursor-default'}
+                        >
+                          <Badge
+                            variant={activeTech === skill ? 'default' : 'secondary'}
+                            className={`transition-colors ${isLinked ? 'hover:bg-primary hover:text-primary-foreground' : 'opacity-70'}`}
+                          >
+                            {skill}
+                          </Badge>
+                        </button>
+                      )
+                    })}
                   </div>
                 </CardContent>
               </Card>

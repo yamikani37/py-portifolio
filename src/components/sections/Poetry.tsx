@@ -38,10 +38,15 @@ export default function Poetry() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
+          <p className="text-sm font-semibold uppercase tracking-wide text-primary mb-2">
+            Beyond the code
+          </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Poetry</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Selected works under my pen name, Ghost
+            Alongside software, I write bilingual and multilingual poetry under the pen name{' '}
+            <span className="font-semibold text-foreground">{SITE_CONFIG.penName}</span>,
+            moving between English, Chewa, and Bemba.
           </p>
         </motion.div>
 
